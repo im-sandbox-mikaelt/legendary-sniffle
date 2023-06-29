@@ -47,6 +47,7 @@ jobs:
         with:
           repository: 'im-sandbox-mikaelt/hello-EY-composite-action'
           path: ./.github/actions/hello-EY-composite-action
+          token: ${{ secrets.GH_TOKEN }}
 
       # Runs a single command using the runners shell
       - name: Run a composite action
