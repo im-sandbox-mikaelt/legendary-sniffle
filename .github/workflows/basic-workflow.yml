@@ -42,10 +42,15 @@ jobs:
         if: ${{ github.event_name == 'pull-request' }}
         run: echo Hello from the PR!
 
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+        with:
+          repository: 'im-sandbox-mikaelt/hello-EY-composite-action'
+          path: ./.github/actions/hello-EY-composite-action
 
-  deployment:
-    runs-on: ubuntu-latest
-    environment: DEV
-    steps:
-      - run: echo Hello from the Deployment....Deploy step 1
+      # Runs a single command using the runners shell
+      - name: Run a composite action
+        uses: ./.github/actions/hello-EY-composite-action
+        with:
+          who-to-greet: 'Mona the Octocat with EY'
 
